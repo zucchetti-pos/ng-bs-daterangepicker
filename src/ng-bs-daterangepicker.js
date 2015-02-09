@@ -22,7 +22,7 @@ angular.module('ngBootstrap', []).directive('input', function ($compile, $parse)
             options.maxDate = $attributes.maxDate && moment($attributes.maxDate);
             options.dateLimit = $attributes.limit && moment.duration.apply(this, $attributes.limit.split(' ').map(function (elem, index) { return index === 0 && parseInt(elem, 10) || elem; }) );
             options.ranges = $attributes.ranges && $parse($attributes.ranges)($scope);
-            options.locale = {cancelLabel:'', applyLabel:''};
+            options.locale = {cancelLabel:'', applyLabel:'', customRangeLabel: 'Outro Período'};
             options.applyClass = 'fa fa-check btn-success btn-lg';
             options.cancelClass = 'fa fa-times btn-default btn-lg btn-primary';
 
