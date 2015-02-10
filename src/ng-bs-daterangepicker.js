@@ -57,7 +57,13 @@ angular.module('ngBootstrap', []).directive('input', function ($compile, $parse)
 				$element.data('daterangepicker').endDate = modelValue.endDate;
 				$element.data('daterangepicker').updateView();
 				$element.data('daterangepicker').updateCalendars();
-				$element.data('daterangepicker').updateInputText();
+				
+				if ($attributes.updateInputText) {
+                    var elementCurrent = $element.data('daterangepicker');
+                    $parse($attributes.updateInputText)($scope, {element: elementCurrent});
+                } else {
+                    $element.data('daterangepicker').updateInputText();
+                }
 			});
 
             if(angular.element(".daterangepicker").size()>0) {
